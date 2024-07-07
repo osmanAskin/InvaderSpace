@@ -9,7 +9,7 @@
 ![gameplay (2)](https://github.com/osmanAskin/InvaderSpace/assets/115871580/2bbd5352-f6a5-407e-8d63-3bfacfad6eda)
   
 
-# **Game Over**
+# **Game UI**
 ![gameplay1](https://github.com/osmanAskin/InvaderSpace/assets/115871580/de01e662-f98d-4e32-a242-0fc3d08bbea2)
 
 
