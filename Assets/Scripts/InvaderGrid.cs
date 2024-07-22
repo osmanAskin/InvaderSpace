@@ -19,7 +19,8 @@ public class InvaderGrid : MonoBehaviour
     private Vector3 direction = Vector2.right;
     private float missileAttackRate = 2f;
     
-    private GameManager gameManager;
+    public GameManager gameManager;
+    public AudioManager _audioManagerClass;
 
     private void Awake()
     {
@@ -40,6 +41,8 @@ public class InvaderGrid : MonoBehaviour
                 invader.transform.localPosition = position;
             }
         }
+
+        _audioManagerClass = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Start()
@@ -102,8 +105,10 @@ public class InvaderGrid : MonoBehaviour
 
     private void InvaderKýlled()
     {
+        _audioManagerClass.PlaySFX(_audioManagerClass.deadInvadersSound);
         this.amountKilled++;
         gameManager.SetScore();
+
 
         if(this.amountKilled >= this.totalInvaders) 
         {

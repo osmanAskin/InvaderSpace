@@ -11,7 +11,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Projectile laserPrefab;
     [SerializeField] private bool laserActive;
 
-    GameManager gameManager;
+    public GameManager gameManager;
+    public AudioManager _audioManagerClass;
+
+    private void Awake()
+    {
+        _audioManagerClass = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void Start()
     {
@@ -42,7 +48,8 @@ public class PlayerMovement : MonoBehaviour
             Projectile projectile = Instantiate(this.laserPrefab, this.transform.position, Quaternion.identity);
             projectile.destroyed += LaserDestoryed;
             laserActive = true;
-            
+            _audioManagerClass.PlaySFX(_audioManagerClass.bulletSound);
+
         }
     }
 
@@ -56,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Invader") ||
            collision.gameObject.layer == LayerMask.NameToLayer("Missile")) 
         {
+            _audioManagerClass.PlaySFX(_audioManagerClass.gameOverSound);
             gameManager.LevelLoaded();
         }
            

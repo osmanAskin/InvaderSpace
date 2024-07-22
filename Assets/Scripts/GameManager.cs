@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI hiScoreText;
     public GameObject gameOverObject;
+    public GameObject tapToMoveObject;
 
     private int score;
     private int hiscore;
@@ -50,8 +51,10 @@ public class GameManager : MonoBehaviour
 
     public void LevelLoaded() 
     {
+        gameObject.SetActive(true);
+        tapToMoveObject.SetActive(false);
         gameOverObject.SetActive(true);
-        Invoke(nameof(GetGameOverScreen), 2f);
+        Invoke(nameof(GetGameOverScreen), 3f);
     }
 
     public void GetGameOverScreen() 
